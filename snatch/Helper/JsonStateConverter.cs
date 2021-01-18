@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace snatch.Helper
 {
@@ -8,12 +9,35 @@ namespace snatch.Helper
     {
         public T From<T>(string fromConvert)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(fromConvert))
+                return default(T);
+            T result;
+            try
+            {
+                result = JsonConvert.DeserializeObject<T>(fromConvert);
+            }
+            catch (Exception ex)
+            {
+                throw new JsonSerializationException(ex.Message, ex);
+            }
+            return result;
         }
 
         public string To<T>(T toConvert)
         {
-            throw new NotImplementedException();
+            if (toConvert==null)
+                return default(string);
+
+            string result;
+            try
+            {
+                result = JsonConvert.SerializeObject(toConvert);
+            }
+            catch (Exception ex)
+            {
+                throw new JsonSerializationException(ex.Message, ex);
+            }
+            return result;
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
-
+    using HtmlAgilityPack;
     public class Program
     {
         public static void Main(string[] args)
@@ -12,6 +12,7 @@
 
         private static async Task RunAsync()
         {
+            var client = new HttpClientWrapper();
 
         }
     }
