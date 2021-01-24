@@ -4,6 +4,7 @@ using System.Text;
 
 namespace snatch.Helper
 {
+
     interface IStateConverter
     {
         public string To<T>(T toConvert);

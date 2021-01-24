@@ -18,6 +18,7 @@ namespace snatch.Helper
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw new JsonSerializationException(ex.Message, ex);
             }
             return result;
@@ -35,6 +36,7 @@ namespace snatch.Helper
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 throw new JsonSerializationException(ex.Message, ex);
             }
             return result;
